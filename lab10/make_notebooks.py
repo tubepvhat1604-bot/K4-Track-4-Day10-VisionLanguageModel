@@ -155,6 +155,7 @@ os.chdir("/kaggle/working")
 if not os.path.exists("lab"):
     subprocess.run(["git", "clone", "-q", "-b", BRANCH, REPO_URL, "lab"], check=True)
 os.chdir("/kaggle/working/lab")
+subprocess.run(["git", "pull", "-q", "origin", BRANCH], check=True)   # luôn lấy mã mới nhất
 subprocess.run(["git", "log", "--oneline", "-1"])
 !nvidia-smi -L
 !pip -q install -r requirements-colab.txt

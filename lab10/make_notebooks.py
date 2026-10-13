@@ -156,6 +156,11 @@ if not os.path.exists("lab"):
     subprocess.run(["git", "clone", "-q", "-b", BRANCH, REPO_URL, "lab"], check=True)
 os.chdir("/kaggle/working/lab")
 subprocess.run(["git", "pull", "-q", "origin", BRANCH], check=True)   # luôn lấy mã mới nhất
+try:   # tuỳ chọn: Add-ons → Secrets → HF_TOKEN để tải model nhanh hơn (không ghi token vào notebook)
+    from kaggle_secrets import UserSecretsClient
+    os.environ["HF_TOKEN"] = UserSecretsClient().get_secret("HF_TOKEN")
+except Exception:
+    pass
 subprocess.run(["git", "log", "--oneline", "-1"])
 !nvidia-smi -L
 !pip -q install -r requirements-colab.txt

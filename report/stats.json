@@ -1,0 +1,75 @@
+{
+  "split_stats": {
+    "train": {
+      "images": 1422,
+      "boxes": {
+        "pothole": 1074,
+        "crack": 1750,
+        "manhole": 691
+      },
+      "sessions": 13,
+      "empty_images": 0,
+      "median_box_area_frac": {
+        "pothole": 0.0037673718750000002,
+        "crack": 0.013502565103999997,
+        "manhole": 0.00390625
+      }
+    },
+    "val": {
+      "images": 276,
+      "boxes": {
+        "pothole": 66,
+        "crack": 470,
+        "manhole": 103
+      },
+      "sessions": 2,
+      "empty_images": 0,
+      "median_box_area_frac": {
+        "pothole": 0.0037978081600000004,
+        "crack": 0.013216164236000002,
+        "manhole": 0.00661894184
+      }
+    },
+    "test": {
+      "images": 311,
+      "boxes": {
+        "pothole": 121,
+        "crack": 299,
+        "manhole": 163
+      },
+      "sessions": 3,
+      "empty_images": 0,
+      "median_box_area_frac": {
+        "pothole": 0.004192700868000001,
+        "crack": 0.019813205035,
+        "manhole": 0.006688347743
+      }
+    },
+    "session_overlap": {
+      "train&val": 0,
+      "train&test": 0,
+      "val&test": 0
+    }
+  },
+  "dataset_version": "d10-21e4070301",
+  "param_counts": {
+    "vit_blocks_and_patch_embed": 306242560,
+    "merger": 27271680,
+    "deepstack_merger_list": 81833472,
+    "llm_layers_and_norm": 3633511936,
+    "embed_tokens": 388956160,
+    "lm_head": 0,
+    "vit_total": 415347712,
+    "projector_total": 109105152,
+    "llm_total": 4022468096,
+    "total": 4437815808
+  },
+  "example": {
+    "image_id": "20250216_164325",
+    "total_tokens": 586,
+    "image_tokens": 220,
+    "loss_tokens": 250,
+    "masked_tokens": 336,
+    "decoded_loss_part": "[{\"label\":\"crack\",\"bbox_2d\":[430,467,583,506]},{\"label\":\"pothole\",\"bbox_2d\":[361,475,414,522]},{\"label\":\"manhole\",\"bbox_2d\":[317,481,616,625]},{\"label\":\"pothole\",\"bbox_2d\":[583,500,627,614]},{\"label\":\"crack\",\"bbox_2d\":[580,508,655,614]},{\"label\":\"pothole\",\"bbox_2d\":[259,517,311,572]},{\"label\":\"crack\",\"bbox_2d\":[397,628,447,717]},{\"label\":\"crack\",\"bbox_2d\":[339,683,398,808]},{\"label\":\"crack\",\"bbox_2d\":[158,789,361,994]}]<|im_end|>\n"
+  }
+}

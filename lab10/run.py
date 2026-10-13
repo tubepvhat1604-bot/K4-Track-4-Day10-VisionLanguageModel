@@ -163,7 +163,8 @@ class Lab:
     def load_inference_model(self, adir, train_projector):
         from peft import PeftModel
 
-        from .modeling import load_projector_state
+        from .modeling import load_projector_state, patch_old_torchao
+        patch_old_torchao()
         model = self.load_base()
         model = PeftModel.from_pretrained(model, str(adir))
         if train_projector:
@@ -224,7 +225,8 @@ class Lab:
 
         from .grpo import run_grpo
         from .infer import predict
-        from .modeling import load_projector_state
+        from .modeling import load_projector_state, patch_old_torchao
+        patch_old_torchao()
         if self.evidence("e5").exists():
             return log("E5 đã có evidence, bỏ qua")
         base = self.best_setup()

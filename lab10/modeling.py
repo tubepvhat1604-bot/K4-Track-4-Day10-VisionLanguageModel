@@ -9,6 +9,27 @@ VIT_TARGETS = r"model\.visual\.blocks\.\d+\.(attn\.(qkv|proj)|mlp\.(linear_fc1|l
 PROJECTOR_KEYS = ("visual.merger", "visual.deepstack_merger_list")
 
 
+def patch_old_torchao():
+    """Kaggle cài sẵn torchao cũ (0.10); peft 0.21 coi đó là lỗi khi gắn LoRA lên nn.Linear thường
+    (ViT ở E3). Ta không dùng torchao, nên coi như torchao không có mặt."""
+    import sys
+
+    import peft  # noqa: F401
+    from peft import import_utils
+
+    orig = import_utils.is_torchao_available
+
+    def safe():
+        try:
+            return orig()
+        except ImportError:
+            return False
+
+    for name, mod in list(sys.modules.items()):
+        if name.startswith("peft") and getattr(mod, "is_torchao_available", None) is orig:
+            mod.is_torchao_available = safe
+
+
 def load_processor(model_id=MODEL_ID):
     from transformers import AutoProcessor
     proc = AutoProcessor.from_pretrained(model_id)
@@ -90,6 +111,7 @@ def apply_setup(model, targets="llm", train_projector=False, r=16, alpha=32, dro
 
     from peft import LoraConfig, get_peft_model
 
+    patch_old_torchao()
     for p in model.parameters():
         p.requires_grad = False
     regex = lora_target_regex(targets)

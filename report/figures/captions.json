@@ -1,0 +1,141 @@
+[
+  {
+    "file": "figures/e3_dung_vlcsnap-2025-02-18-23h10m48s405.png",
+    "exp": "E3",
+    "kind": "dung",
+    "image_id": "vlcsnap-2025-02-18-23h10m48s405",
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "gt": [
+      "crack",
+      "manhole",
+      "pothole"
+    ],
+    "raw": "[{\"label\":\"crack\",\"bbox_2d\":[398,478,473,778]},{\"label\":\"manhole\",\"bbox_2d\":[623,517,723,572]},{\"label\":\"pothole\",\"bbox_2d\":[798,606,866,653]}]"
+  },
+  {
+    "file": "figures/e3_dung_vlcsnap-2025-02-19-17h04m47s362.png",
+    "exp": "E3",
+    "kind": "dung",
+    "image_id": "vlcsnap-2025-02-19-17h04m47s362",
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "gt": [
+      "pothole",
+      "pothole",
+      "pothole"
+    ],
+    "raw": "[{\"label\":\"pothole\",\"bbox_2d\":[378,622,427,669]},{\"label\":\"pothole\",\"bbox_2d\":[434,633,498,694]},{\"label\":\"pothole\",\"bbox_2d\":[431,669,494,722]}]"
+  },
+  {
+    "file": "figures/e3_dung_vlcsnap-00200.png",
+    "exp": "E3",
+    "kind": "dung",
+    "image_id": "vlcsnap-00200",
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "gt": [
+      "crack",
+      "manhole"
+    ],
+    "raw": "[{\"label\":\"crack\",\"bbox_2d\":[350,658,536,761]},{\"label\":\"manhole\",\"bbox_2d\":[903,778,1000,839]}]"
+  },
+  {
+    "file": "figures/e3_sai_FP_vlcsnap-2025-02-18-23h30m29s649.png",
+    "exp": "E3",
+    "kind": "sai_FP",
+    "image_id": "vlcsnap-2025-02-18-23h30m29s649",
+    "tp": 1,
+    "fp": 6,
+    "fn": 2,
+    "gt": [
+      "crack",
+      "crack",
+      "crack"
+    ],
+    "raw": "[{\"label\":\"crack\",\"bbox_2d\":[228,489,409,636]},{\"label\":\"crack\",\"bbox_2d\":[486,492,586,653]},{\"label\":\"crack\",\"bbox_2d\":[591,494,723,736]},{\"label\":\"crack\",\"bbox_2d\":[239,606,498,786]},{\"label\":\"pothole\",\"bbox_2d\":[434,472,500,511]},{\"label\":\"manhole\",\"bbox_2d\":[603,475,719,511]},{\"label\":\"pothole\",\"bbox_2d\":[494,603,619,661]}]"
+  },
+  {
+    "file": "figures/e3_sai_FP_vlcsnap-2025-02-19-17h03m29s526.png",
+    "exp": "E3",
+    "kind": "sai_FP",
+    "image_id": "vlcsnap-2025-02-19-17h03m29s526",
+    "tp": 0,
+    "fp": 5,
+    "fn": 4,
+    "gt": [
+      "pothole",
+      "pothole",
+      "pothole",
+      "crack"
+    ],
+    "raw": "[{\"label\":\"crack\",\"bbox_2d\":[373,503,459,553]},{\"label\":\"crack\",\"bbox_2d\":[378,561,434,661]},{\"label\":\"crack\",\"bbox_2d\":[481,622,553,683]},{\"label\":\"crack\",\"bbox_2d\":[489,683,644,800]},{\"label\":\"crack\",\"bbox_2d\":[194,728,389,803]}]"
+  },
+  {
+    "file": "figures/e3_sai_FN_vlcsnap-2025-02-18-23h30m28s990.png",
+    "exp": "E3",
+    "kind": "sai_FN",
+    "image_id": "vlcsnap-2025-02-18-23h30m28s990",
+    "tp": 0,
+    "fp": 1,
+    "fn": 7,
+    "gt": [
+      "pothole",
+      "pothole",
+      "pothole",
+      "pothole",
+      "crack",
+      "crack",
+      "crack"
+    ],
+    "raw": "[{\"label\":\"crack\",\"bbox_2d\":[128,453,719,783]}]"
+  },
+  {
+    "file": "figures/e3_sai_FN_vlcsnap-2025-02-18-23h24m36s429.png",
+    "exp": "E3",
+    "kind": "sai_FN",
+    "image_id": "vlcsnap-2025-02-18-23h24m36s429",
+    "tp": 0,
+    "fp": 3,
+    "fn": 5,
+    "gt": [
+      "crack",
+      "crack",
+      "crack",
+      "crack",
+      "crack"
+    ],
+    "raw": "[{\"label\":\"crack\",\"bbox_2d\":[236,500,598,861]},{\"label\":\"pothole\",\"bbox_2d\":[559,683,603,733]},{\"label\":\"manhole\",\"bbox_2d\":[869,694,1000,767]}]"
+  },
+  {
+    "file": "figures/e0_json_hong_vlcsnap-2025-02-18-23h13m59s036.png",
+    "exp": "E0",
+    "kind": "json_hong",
+    "image_id": "vlcsnap-2025-02-18-23h13m59s036",
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "gt": [
+      "manhole",
+      "manhole"
+    ],
+    "raw": "[{\"label\": \"crack\", \"bbox_2d\": [375, 500, 500, 550]}, {\"label\": \"crack\", \"bbox_2d\": [375, 550, 500, 600]}, {\"label\": \"crack\", \"bbox_2d\": [375, 600, 500, 650]}, {\"label\": \"crack\", \"bbox_2d\": [375, 650, 500, 700]}, {\"label\": \"crack\", \"bbox_2d\": [375, 700, 500, 750]}, {\"label\": \"crack\", \"bbox_2d\": [375, 750, 500, 800]}, {\"label\": \"crack\", \"bbox_2d\": [375, 800, 500, 850]}, {\"label\": \"crack\", \"bbox_2d\": [375, 850, "
+  },
+  {
+    "file": "figures/e0_zero_shot_vlcsnap-00200.png",
+    "exp": "E0",
+    "kind": "zero_shot",
+    "image_id": "vlcsnap-00200",
+    "tp": 0,
+    "fp": 1,
+    "fn": 2,
+    "gt": [
+      "crack",
+      "manhole"
+    ],
+    "raw": "[{\"label\": \"crack\", \"bbox_2d\": [750, 634, 850, 684]}]"
+  }
+]

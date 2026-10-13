@@ -1,0 +1,11 @@
+{
+  "trainable_params": 39321600,
+  "peak_vram_gb": 7.82,
+  "train_minutes": 27.4,
+  "max_steps": 60,
+  "num_generations": 4,
+  "max_completion_length": 128,
+  "learning_rate": 5e-06,
+  "beta": 0.0,
+  "init_from": "E3"
+}

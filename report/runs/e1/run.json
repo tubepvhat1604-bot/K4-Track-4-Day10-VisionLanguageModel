@@ -1,0 +1,29 @@
+{
+  "trainable_params": 33030144,
+  "peak_vram_gb": 6.78,
+  "train_minutes": 43.7,
+  "max_steps": 300,
+  "batch_size": 2,
+  "grad_accum": 4,
+  "lr": 0.0002,
+  "n_train_images": 1422,
+  "first_loss": 1.7711415886878967,
+  "last_loss": 0.6312138438224792,
+  "matched_lora_modules": 252,
+  "trainable_projector_params": 0,
+  "trainable_lora_params": 33030144,
+  "setup": {
+    "targets": "llm",
+    "train_projector": false,
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "lr": 0.0002,
+    "batch_size": 2,
+    "grad_accum": 4,
+    "max_steps": 300,
+    "seed": 42
+  },
+  "train_fraction": 1.0,
+  "coord": "norm1000"
+}

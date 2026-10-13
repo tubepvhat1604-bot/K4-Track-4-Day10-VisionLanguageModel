@@ -22,11 +22,27 @@ def load_model(model_id=MODEL_ID, quantize=True, dtype=torch.float16, device_map
     if quantize:
         kw["quantization_config"] = BitsAndBytesConfig(
             load_in_4bit=True, bnb_4bit_quant_type="nf4", bnb_4bit_compute_dtype=dtype,
-            bnb_4bit_use_double_quant=True, llm_int8_skip_modules=["visual", "lm_head"])
+            bnb_4bit_use_double_quant=True,
+            # transformers 5.x so khớp tên module từ ĐẦU tên đầy đủ ("model.visual.blocks..."),
+            # nên chỉ ghi "visual" như GUIDE thì ViT vẫn bị lượng tử hoá. Thêm "model.visual".
+            llm_int8_skip_modules=["visual", "model.visual", "lm_head"])
         kw["device_map"] = device_map or {"": 0}
     elif device_map is not None:
         kw["device_map"] = device_map
-    return Qwen3VLForConditionalGeneration.from_pretrained(model_id, **kw)
+    model = Qwen3VLForConditionalGeneration.from_pretrained(model_id, **kw)
+    if quantize:
+        check_vit_not_quantized(model)
+    return model
+
+
+def check_vit_not_quantized(model):
+    """ViT + projector phải là Linear fp16 thường; LLM phải là 4-bit."""
+    bad = [n for n, m in model.named_modules()
+           if "visual" in n and "4bit" in type(m).__name__]
+    if bad:
+        raise RuntimeError(f"ViT/projector bị lượng tử hoá 4-bit ({len(bad)} module, ví dụ {bad[:2]})")
+    if not any("4bit" in type(m).__name__ for n, m in model.named_modules() if "language_model" in n):
+        raise RuntimeError("LLM không được lượng tử hoá 4-bit")
 
 
 def block_param_counts(model_or_config):
@@ -87,6 +103,8 @@ def apply_setup(model, targets="llm", train_projector=False, r=16, alpha=32, dro
     if train_projector:
         for n, p in model.named_parameters():
             if any(k in n for k in PROJECTOR_KEYS):
+                if not p.is_floating_point():
+                    raise RuntimeError(f"{n} không phải số thực (bị lượng tử hoá?), không train được")
                 p.data = p.data.float()
                 p.requires_grad = True
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)

@@ -64,6 +64,11 @@ def run_grpo(model, processor, out_dir, splits_dir, data_dir, max_steps=60, num_
         torch.cuda.reset_peak_memory_stats()
     trainer = GRPOTrainer(model=model, reward_funcs=reward_fn, args=args, train_dataset=ds,
                           processing_class=processor)
+    # Với model 4-bit, GRPOTrainer tự ép tham số LoRA sang bf16; GPU T4 + fp16 GradScaler không unscale
+    # được gradient bf16, nên đưa tham số huấn luyện về lại fp32 (optimizer chưa được tạo ở đây).
+    for p in trainer.model.parameters():
+        if p.requires_grad and p.dtype != torch.float32:
+            p.data = p.data.float()
     t0 = time.time()
     trainer.train()
     minutes = (time.time() - t0) / 60
